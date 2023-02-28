@@ -5,7 +5,6 @@ s.options.numWireBufs=64*1;
 s.options.numInputBusChannels=0;
 s.options.outputStreamsEnabled.postln
 s.options.device_("USB Sound Device");
-s.record(numChannels:4) ;
 
 ({Out.ar(2,SoundIn.ar(0))}.play;
 s.record(bus:2,numChannels:1))
@@ -761,12 +760,9 @@ Pdef(\6, Pbind(\instrument, \of, \dur,Pexprand(5,6,28*4),
 )).play(quant:1);
 )
 
+s.record(numChannels:4) ;
 
-Array.series(8128,1,1)
-
-///
-Array.fib(5, 1 ).postln;
 ((4*32)-1)*((4*32)/2);
 ////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\/////////////////\\\\\\\\\\\\\\\/////////////////
 ////CHANNELS:BLRF
-28*(8128/28)
+
