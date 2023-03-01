@@ -7,7 +7,7 @@ s.options.outputStreamsEnabled.postln
 s.options.device_("USB Sound Device");
 
 ({Out.ar(2,SoundIn.ar(0))}.play;
-s.record(bus:2,numChannels:1))
+s.record(numChannels:4)
 
 s.options.numWireBufs = 1024*16;
 
@@ -41,7 +41,7 @@ SynthDef.new(\oa, {
 	over4=4;
 	m=0;
 	frequency=2;
-	bank=8;
+	bank=12;
 	angle=0;
 	detune=1;
 	modamp=2;
@@ -156,7 +156,7 @@ SynthDef.new(\ob, {
 	over4=4;
 	m=0;
 	frequency=2;
-	bank=8;
+	bank=12;
 	angle=0;
 	detune=1;
 	modamp=2;
@@ -273,7 +273,7 @@ SynthDef.new(\oc, {
 	over4=4;
 	m=0;
 	frequency=2;
-	bank=8;
+	bank=12;
 	angle=0;
 	detune=1;
 	modamp=2;
@@ -387,7 +387,7 @@ SynthDef.new(\od, {
 	over4=4;
 	m=0;
 	frequency=2;
-	bank=8;
+	bank=12;
 	angle=0;
 	detune=1;
 	modamp=2;
@@ -502,7 +502,7 @@ SynthDef.new(\oe, {
 	over4=4;
 	m=0;
 	frequency=2;
-	bank=8;
+	bank=12;
 	angle=0;
 	detune=1;
 	modamp=2;
@@ -619,7 +619,7 @@ SynthDef.new(\of, {
 	over4=4;
 	m=0;
 	frequency=2;
-	bank=8;
+	bank=12;
 	angle=0;
 	detune=1;
 	modamp=2;
