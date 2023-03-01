@@ -26,7 +26,7 @@ e.sampleRate
 s.sampleRate
 e.query
 
-~e = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/windhh_fx.wav")
+~e = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/SC_230301_192332.wav")
 );
 
 (
@@ -112,18 +112,18 @@ Synth.new(\wind0);3.999999.rand.wait;
 Synth.new(\wind1);3.999999.rand.wait;
 Synth.new(\wind2);3.999999.rand.wait;
 Synth.new(\wind3);3.999999.rand.wait;
-Synth.new(\wind4);3.999999.rand.wait;
+//Synth.new(\wind4);3.999999.rand.wait;
 Synth.new(\wind5);3.999999.rand.wait;
-Synth.new(\wind6);3.999999.rand.wait;
+//Synth.new(\wind6);3.999999.rand.wait;
 Synth.new(\wind7);3.999999.rand.wait;
-Synth.new(\wind8);3.999999.rand.wait;
+//Synth.new(\wind8);3.999999.rand.wait;
 Synth.new(\wind9);3.999999.rand.wait;
 Synth.new(\wind10);3.999999.rand.wait;
 Synth.new(\wind11);3.999999.rand.wait;
-Synth.new(\wind12);3.999999.rand.wait;
+//Synth.new(\wind12);3.999999.rand.wait;
 Synth.new(\wind13);3.999999.rand.wait;
 Synth.new(\wind14);3.999999.rand.wait;
-Synth.new(\wind15);3.999999.rand.wait;
+//Synth.new(\wind15);3.999999.rand.wait;
 Synth.new(\wind16);3.999999.rand.wait;
 Synth.new(\wind17);3.999999.rand.wait;
 }
@@ -134,23 +134,23 @@ Tdef(\h).stop;
 Tdef(\h).play;
 Tdef(\h).clear;
 
-Tdef(\x, { loop { 0.125.wait; "aazz".scramble.postln } });
+Tdef(\x, { loop { 0.0125.wait; "aazz".scramble.postln } });
 
 Synth.new(\wind0);
 Synth.new(\wind1);
 Synth.new(\wind2);
 Synth.new(\wind3);
-Synth.new(\wind4);
+//Synth.new(\wind4);
 Synth.new(\wind5);
-Synth.new(\wind6);
+//Synth.new(\wind6);
 Synth.new(\wind7);
-Synth.new(\wind8);
+//Synth.new(\wind8);
 Synth.new(\wind9);
 Synth.new(\wind10);
 Synth.new(\wind11);
-Synth.new(\wind12);
+//Synth.new(\wind12);
 Synth.new(\wind13);
 Synth.new(\wind14);
-Synth.new(\wind15);
+//Synth.new(\wind15);
 Synth.new(\wind16);
 Synth.new(\wind17);
