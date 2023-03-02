@@ -73,14 +73,39 @@ e.query
 	x=5;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*100);}).add;);
-// (SynthDef.new(\wind10, { arg pitch,x,a; var sig,pass,fund;var env,aud;
-// 	x=7;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
-// 	sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
-// Out.ar(0,sig*env*100);}).add;);
-// (SynthDef.new(\wind11, { arg pitch,x,a; var sig,pass,fund;var env,aud;
-// 	x=8;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
-// 	sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
-// Out.ar(0,sig*env*100);}).add;);
+
+(SynthDef.new(\wind10, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+	x=1;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*100);}).add;);
+(SynthDef.new(\wind11, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+	x=3;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*100);}).add;);
+(SynthDef.new(\wind12, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+	x=5;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*100);}).add;);
+(SynthDef.new(\wind13, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+	x=6;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*100);}).add;);
+ (SynthDef.new(\wind14, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+ 	x=7;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+ 	sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+ Out.ar(0,sig*env*100);}).add;);
+ (SynthDef.new(\wind15, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+ 	x=9;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+ 	sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+ Out.ar(0,sig*env*100);}).add;);
+(SynthDef.new(\wind16, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+	x=10;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*100);}).add;);
+(SynthDef.new(\wind17, { arg pitch,x,a; var sig,pass,fund;var env,aud;
+	x=11;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.01,4,pitch.reciprocal),doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*100);}).add;);
 )
 
 (
@@ -95,8 +120,14 @@ Synth.new(\wind6);3.999999.rand.wait;
 Synth.new(\wind7);3.999999.rand.wait;
 Synth.new(\wind8);3.999999.rand.wait;
 Synth.new(\wind9);3.999999.rand.wait;
-/*Synth.new(\wind10);3.999999.rand.wait;
-Synth.new(\wind11);3.999999.rand.wait;*/
+Synth.new(\wind10);3.999999.rand.wait;
+Synth.new(\wind11);3.999999.rand.wait;
+Synth.new(\wind12);3.999999.rand.wait;
+Synth.new(\wind13);3.999999.rand.wait;
+Synth.new(\wind14);3.999999.rand.wait;
+Synth.new(\wind15);3.999999.rand.wait;
+Synth.new(\wind16);3.999999.rand.wait;
+Synth.new(\wind17);3.999999.rand.wait;
 }
 )})
 )
