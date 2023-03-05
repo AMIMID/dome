@@ -72,31 +72,31 @@ SynthDef.new(\t, {
 ////////////////////////////////////////////////////////////////////////////
 
 	v1a = Out.ar(0,LeakDC.ar(InFeedback.ar(19))*env);
-	v1b = Out.ar(0,LeakDC.ar(InFeedback.ar(23))*env);
-	v1c = Out.ar(0,LeakDC.ar(InFeedback.ar(27))*env);
-	v1d = Out.ar(0,LeakDC.ar(InFeedback.ar(31))*env);
-	v1e = Out.ar(0,LeakDC.ar(InFeedback.ar(35))*env);
-	v1f = Out.ar(0,LeakDC.ar(InFeedback.ar(39))*env);
+	v1b = Out.ar(0,LeakDC.ar(InFeedback.ar(20))*env);
+	v1c = Out.ar(0,LeakDC.ar(InFeedback.ar(21))*env);
+	v1d = Out.ar(0,LeakDC.ar(InFeedback.ar(22))*env);
+	v1e = Out.ar(0,LeakDC.ar(InFeedback.ar(23))*env);
+	v1f = Out.ar(0,LeakDC.ar(InFeedback.ar(24))*env);
 
-	v2a = Out.ar(1,LeakDC.ar(InFeedback.ar(20))*env);
-	v2b = Out.ar(1,LeakDC.ar(InFeedback.ar(24))*env);
-	v2c = Out.ar(1,LeakDC.ar(InFeedback.ar(28))*env);
-	v2d = Out.ar(1,LeakDC.ar(InFeedback.ar(32))*env);
-	v2e = Out.ar(1,LeakDC.ar(InFeedback.ar(36))*env);
-	v2f = Out.ar(1,LeakDC.ar(InFeedback.ar(40))*env);
+	v2a = Out.ar(1,LeakDC.ar(InFeedback.ar(25))*env);
+	v2b = Out.ar(1,LeakDC.ar(InFeedback.ar(26))*env);
+	v2c = Out.ar(1,LeakDC.ar(InFeedback.ar(27))*env);
+	v2d = Out.ar(1,LeakDC.ar(InFeedback.ar(28))*env);
+	v2e = Out.ar(1,LeakDC.ar(InFeedback.ar(29))*env);
+	v2f = Out.ar(1,LeakDC.ar(InFeedback.ar(30))*env);
 
-	v3a = Out.ar(2,LeakDC.ar(InFeedback.ar(21))*env);
-	v3b = Out.ar(2,LeakDC.ar(InFeedback.ar(25))*env);
-	v3c = Out.ar(2,LeakDC.ar(InFeedback.ar(29))*env);
-	v3d = Out.ar(2,LeakDC.ar(InFeedback.ar(33))*env);
-	v3e = Out.ar(2,LeakDC.ar(InFeedback.ar(37))*env);
-	v3f = Out.ar(2,LeakDC.ar(InFeedback.ar(41))*env);
+	v3a = Out.ar(2,LeakDC.ar(InFeedback.ar(31))*env);
+	v3b = Out.ar(2,LeakDC.ar(InFeedback.ar(32))*env);
+	v3c = Out.ar(2,LeakDC.ar(InFeedback.ar(33))*env);
+	v3d = Out.ar(2,LeakDC.ar(InFeedback.ar(34))*env);
+	v3e = Out.ar(2,LeakDC.ar(InFeedback.ar(35))*env);
+	v3f = Out.ar(2,LeakDC.ar(InFeedback.ar(36))*env);
 
-	v4a = Out.ar(3,LeakDC.ar(InFeedback.ar(22))*env);
-	v4b = Out.ar(3,LeakDC.ar(InFeedback.ar(26))*env);
-	v4c = Out.ar(3,LeakDC.ar(InFeedback.ar(30))*env);
-	v4d = Out.ar(3,LeakDC.ar(InFeedback.ar(34))*env);
-	v4e = Out.ar(3,LeakDC.ar(InFeedback.ar(38))*env);
+	v4a = Out.ar(3,LeakDC.ar(InFeedback.ar(37))*env);
+	v4b = Out.ar(3,LeakDC.ar(InFeedback.ar(38))*env);
+	v4c = Out.ar(3,LeakDC.ar(InFeedback.ar(39))*env);
+	v4d = Out.ar(3,LeakDC.ar(InFeedback.ar(40))*env);
+	v4e = Out.ar(3,LeakDC.ar(InFeedback.ar(41))*env);
 	v4f = Out.ar(3,LeakDC.ar(InFeedback.ar(42))*env);
 
 
