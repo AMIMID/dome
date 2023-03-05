@@ -18,8 +18,8 @@ s.options.memSize = 8192*8;
 s.waitForBoot
 s.reboot;
 
-~p1 = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/l.wav")
-~p2 = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/r.wav")
+~p1 = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/l/lamdoma keysl.wav")
+~p2 = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/l/lamdoma keysr.wav")
 
 
 (
@@ -34,40 +34,40 @@ SynthDef.new(\t, {
 	var v1a,v1b,v1c,v1d,v1e,v1f;
 	var azimuth1, azimuth2;
 
-	duration=120;
-	gain=1;
+	duration=340;
+	gain=2;
 
-	env = EnvGen.ar(Env.sine(duration,gain), doneAction: 2);
+	env = EnvGen.ar(Env.new([0,1,1,0],[1,340,1],gain), doneAction: 2);
 ////////////////////////////////////////////////////////////////////////////	////////
 	azimuth1 = Out.ar(3,Pan2.ar(LeakDC.ar(PlayBuf.ar(1,0,BufRateScale.kr(0),inf),mul:env),pos:MouseX.kr(-1,1)));
 
-	azimuth2 = Out.ar(5,Pan2.ar(LeakDC.ar(PlayBuf.ar(1,1,BufRateScale.kr(0),inf),mul:env),pos:MouseX.kr(-1,1)));
+	azimuth2 = Out.ar(5,Pan2.ar(LeakDC.ar(PlayBuf.ar(1,1,BufRateScale.kr(0),inf),mul:env),pos:MouseY.kr(-1,1)));
 	/////////////////////////////////////////////////////////
 
-	face1 = Out.ar(7,PanAz.ar(3,LeakDC.ar(InFeedback.ar(3)),LFSaw.ar(0.1),env,width:2));
+	face1 = Out.ar(7,PanAz.ar(3,LeakDC.ar(InFeedback.ar(3)),LFSaw.ar(3/4),env,width:2));
 
-	face2 = Out.ar(10,PanAz.ar(3,LeakDC.ar(InFeedback.ar(4)),LFSaw.ar(0.1),env,width:2));
+	face2 = Out.ar(10,PanAz.ar(3,LeakDC.ar(InFeedback.ar(4)),LFSaw.ar(3/4),env,width:2));
 
-	face3 = Out.ar(14,PanAz.ar(3,LeakDC.ar(InFeedback.ar(5)),LFSaw.ar(0.1),env,width:2));
+	face3 = Out.ar(14,PanAz.ar(3,LeakDC.ar(InFeedback.ar(5)),LFSaw.ar(3/4),env,width:2));
 
-	face4 = Out.ar(17,PanAz.ar(3,LeakDC.ar(InFeedback.ar(6)),LFSaw.ar(0.1),env,width:2));
+	face4 = Out.ar(17,PanAz.ar(3,LeakDC.ar(InFeedback.ar(6)),LFSaw.ar(3/4),env,width:2));
 ///////////////////////////////////////////////////////////////////////////////
 
-	edge1a = Out.ar(19,Pan2.ar(InFeedback.ar(7),LFSaw.ar(0.1),env));
-	edge1b = Out.ar(21,Pan2.ar(InFeedback.ar(8),LFSaw.ar(0.1),env));
-	edge1c = Out.ar(23,Pan2.ar(InFeedback.ar(9),LFSaw.ar(0.1),env));
+	edge1a = Out.ar(19,Pan2.ar(InFeedback.ar(7),LFSaw.ar(3/4),env));
+	edge1b = Out.ar(21,Pan2.ar(InFeedback.ar(8),LFSaw.ar(3/4),env));
+	edge1c = Out.ar(23,Pan2.ar(InFeedback.ar(9),LFSaw.ar(3/4),env));
 
-	edge2a = Out.ar(25,Pan2.ar(InFeedback.ar(10),LFSaw.ar(0.1),env));
-	edge2b = Out.ar(27,Pan2.ar(InFeedback.ar(11),LFSaw.ar(0.1),env));
-	edge2c = Out.ar(29,Pan2.ar(InFeedback.ar(12),LFSaw.ar(0.1),env));
+	edge2a = Out.ar(25,Pan2.ar(InFeedback.ar(10),LFSaw.ar(3/4),env));
+	edge2b = Out.ar(27,Pan2.ar(InFeedback.ar(11),LFSaw.ar(3/4),env));
+	edge2c = Out.ar(29,Pan2.ar(InFeedback.ar(12),LFSaw.ar(3/4),env));
 
-	edge3a = Out.ar(31,Pan2.ar(InFeedback.ar(13),LFSaw.ar(0.1),env));
-	edge3b = Out.ar(33,Pan2.ar(InFeedback.ar(14),LFSaw.ar(0.1),env));
-	edge3c = Out.ar(35,Pan2.ar(InFeedback.ar(15),LFSaw.ar(0.1),env));
+	edge3a = Out.ar(31,Pan2.ar(InFeedback.ar(13),LFSaw.ar(3/4),env));
+	edge3b = Out.ar(33,Pan2.ar(InFeedback.ar(14),LFSaw.ar(3/4),env));
+	edge3c = Out.ar(35,Pan2.ar(InFeedback.ar(15),LFSaw.ar(3/4),env));
 
-	edge4a = Out.ar(37,Pan2.ar(InFeedback.ar(16),LFSaw.ar(0.1),env));
-	edge4b = Out.ar(39,Pan2.ar(InFeedback.ar(17),LFSaw.ar(0.1),env));
-	edge4c = Out.ar(41,Pan2.ar(InFeedback.ar(18),LFSaw.ar(0.1),env));
+	edge4a = Out.ar(37,Pan2.ar(InFeedback.ar(16),LFSaw.ar(3/4),env));
+	edge4b = Out.ar(39,Pan2.ar(InFeedback.ar(17),LFSaw.ar(3/4),env));
+	edge4c = Out.ar(41,Pan2.ar(InFeedback.ar(18),LFSaw.ar(3/4),env));
 ////////////////////////////////////////////////////////////////////////////
 
 	v1a = Out.ar(0,LeakDC.ar(InFeedback.ar(19))*env);
