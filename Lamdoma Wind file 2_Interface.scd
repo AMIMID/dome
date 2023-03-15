@@ -1,7 +1,8 @@
 ////////////audio and buffer settings
 
 s.options.numOutputBusChannels=2;
-TempoClock.default.tempo_(120/30);
+TempoClock.default.tempo_(120/120)
+);
 s.options.memSize = 8192*16;
 
 ~e.play
@@ -15,183 +16,177 @@ s.sampleRate
 e.query
 
 ////////////buffer from recording from granulator file
-~e = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/Lamdoma noise LR.wav")
+~e = Buffer.read(s,"/Users/petrostatsiopoulos/Dokuments/PROJECT  FILES/composition/#3/sc/dreadbox synth/audio files/Lamdoma noise LR.wav")
 );
 
-//////////individual Synth Definitions which apply band pass filters in 31 individual tones (case Lamdoma "octave" 32nd) to the noise recording from Granulator file, in stereo)
+//////////individual Synth Definitions which apply band pass filters in 30 individual tones to the noise recording from Granulator file, in stereo)
 (
 
 /////////////1st Lamdoma "octave" a=1 from y=(x+a)x where y is the interface tone (final audio)
 
-(SynthDef.new(\wind0, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=1;a=1;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind2_1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=1;a=1;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=2;a=1;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind3_2, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=2;a=1;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind2, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=3;a=1;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind4_3, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=3;a=1;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
 
 /////////////2nd Lamdoma
 
-(SynthDef.new(\wind3, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=1;a=2;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind3_1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=1;a=2;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind4, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=2;a=2;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind4_2, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=2;a=2;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind5, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=3;a=2;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind5_3, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=3;a=2;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind6, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=4;a=2;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind6_4, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=4;a=2;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind7, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=5;a=2;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind7_5, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=5;a=2;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind8, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=6;a=2;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind8_6, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=6;a=2;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
 
 /////////////3d Lamdoma
 
-(SynthDef.new(\wind9, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=1;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind4_1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=1;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind10, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=2;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind5_2, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=2;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind11, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=3;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind6_3, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=3;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind12, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=4;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind7_4, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=4;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind13, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=5;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind8_5, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=5;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind14, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=6;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind9_6, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=6;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind15, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=7;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind10_7, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=7;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind16, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=8;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind11_8, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=8;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind17, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=9;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind12_9, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=9;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
 
 ///////////////////////4th Lamdoma
-(SynthDef.new(\wind18, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=1;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind5_1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=1;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind19, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=2;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind6_2, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=2;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind20, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=3;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind7_3, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=3;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind21, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=4;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind8_4, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=4;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind22, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=5;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind9_5, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=5;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind23, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=6;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind10_6, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=6;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind24, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=7;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind11_7, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=7;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind25, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=8;a=3;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind12_8, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=8;a=3;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind26, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=9;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind13_9, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=9;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind27, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=4;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind14_10, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=10;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind28, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=5;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind15_11, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=11;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind29, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=6;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
-    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
-    Out.ar(0,sig*env*gain);}).add;);
-(SynthDef.new(\wind30, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
-	gate=1;gain=1000;x=7;a=4;fund=220;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,4,pitch.reciprocal),gate:gate,doneAction:2);
+(SynthDef.new(\wind16_12, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=12;a=4;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
     sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
     Out.ar(0,sig*env*gain);}).add;);
 )
-
 ///////task that sequences the tones in series and in loop in random intervals
 
 (
 Tdef.new(\h,{loop({
-Synth.new(\wind0);2.wait;
-Synth.new(\wind1);2.wait;
-Synth.new(\wind2);2.wait;
-Synth.new(\wind3);2.wait;
-Synth.new(\wind4);2.wait;
-Synth.new(\wind5);2.wait;
-Synth.new(\wind6);2.wait;
-Synth.new(\wind7);2.wait;
-Synth.new(\wind8);2.wait;
-Synth.new(\wind9);2.wait;
-Synth.new(\wind10);2.wait;
-Synth.new(\wind11);2.wait;
-Synth.new(\wind12);2.wait;
-Synth.new(\wind13);2.wait;
-Synth.new(\wind14);2.wait;
-Synth.new(\wind15);2.wait;
-Synth.new(\wind16);2.wait;
-Synth.new(\wind17);2.wait;
-Synth.new(\wind18);2.wait;
-Synth.new(\wind19);2.wait;
-Synth.new(\wind20);2.wait;
-Synth.new(\wind21);2.wait;
-Synth.new(\wind22);2.wait;
-Synth.new(\wind23);2.wait;
-Synth.new(\wind24);2.wait;
-Synth.new(\wind25);2.wait;
-Synth.new(\wind26);2.wait;
-Synth.new(\wind27);2.wait;
-Synth.new(\wind28);2.wait;
-Synth.new(\wind29);2.wait;
-Synth.new(\wind30);2.wait;
+Synth.new(\wind2_1);1.999.rand.wait;
+Synth.new(\wind3_2);1.999.rand.wait;
+Synth.new(\wind4_3);1.999.rand.wait;
+Synth.new(\wind3_1);1.999.rand.wait;
+Synth.new(\wind4_2);1.999.rand.wait;
+Synth.new(\wind5_3);1.999.rand.wait;
+Synth.new(\wind6_4);1.999.rand.wait;
+Synth.new(\wind7_5);1.999.rand.wait;
+Synth.new(\wind8_6);1.999.rand.wait;
+Synth.new(\wind4_1);1.999.rand.wait;
+Synth.new(\wind5_2);1.999.rand.wait;
+Synth.new(\wind6_3);1.999.rand.wait;
+Synth.new(\wind7_4);1.999.rand.wait;
+Synth.new(\wind8_5);1.999.rand.wait;
+Synth.new(\wind9_6);1.999.rand.wait;
+Synth.new(\wind10_7);1.999.rand.wait;
+Synth.new(\wind11_8);1.999.rand.wait;
+Synth.new(\wind12_9);1.999.rand.wait;
+Synth.new(\wind5_1);1.999.rand.wait;
+Synth.new(\wind6_2);1.999.rand.wait;
+Synth.new(\wind7_3);1.999.rand.wait;
+Synth.new(\wind8_4);1.999.rand.wait;
+Synth.new(\wind9_5);1.999.rand.wait;
+Synth.new(\wind10_6);1.999.rand.wait;
+Synth.new(\wind11_7);1.999.rand.wait;
+Synth.new(\wind12_8);1.999.rand.wait;
+Synth.new(\wind13_9);1.999.rand.wait;
+Synth.new(\wind14_10);1.999.rand.wait;
+Synth.new(\wind15_11);1.999.rand.wait;
+Synth.new(\wind16_12);1.999.rand.wait;
 }
 )})
 )
@@ -203,41 +198,40 @@ Tdef(\h).clear;
 
 /////////////////////intividual Synth definition tone triggers
 
-Synth.new(\wind0);
-Synth.new(\wind1);
-Synth.new(\wind2);
-Synth.new(\wind3);
-Synth.new(\wind3);
-Synth.new(\wind5);
-Synth.new(\wind6);
-Synth.new(\wind7);
-Synth.new(\wind8);
-Synth.new(\wind9);
-Synth.new(\wind10);
-Synth.new(\wind11);
-Synth.new(\wind12);
-Synth.new(\wind13);
-Synth.new(\wind14);
-Synth.new(\wind15);
-Synth.new(\wind16);
-Synth.new(\wind17);
-Synth.new(\wind18);
-Synth.new(\wind19);
-Synth.new(\wind20);
-Synth.new(\wind21);
-Synth.new(\wind22);
-Synth.new(\wind23);
-Synth.new(\wind24);
-Synth.new(\wind25);
-Synth.new(\wind26);
-Synth.new(\wind27);
-Synth.new(\wind28);
-Synth.new(\wind29);
-Synth.new(\wind30);
+Synth.new(\wind2_1);
+Synth.new(\wind3_2);
+Synth.new(\wind4_3);
+Synth.new(\wind3_1);
+Synth.new(\wind4_2);
+Synth.new(\wind5_3);
+Synth.new(\wind6_4);
+Synth.new(\wind7_5);
+Synth.new(\wind8_6);
+Synth.new(\wind4_1);
+Synth.new(\wind5_2);
+Synth.new(\wind6_3);
+Synth.new(\wind7_4);
+Synth.new(\wind8_5);
+Synth.new(\wind9_6);
+Synth.new(\wind10_7);
+Synth.new(\wind11_8);
+Synth.new(\wind12_9);
+Synth.new(\wind5_1);
+Synth.new(\wind6_2);
+Synth.new(\wind7_3);
+Synth.new(\wind8_4);
+Synth.new(\wind9_5);
+Synth.new(\wind10_6);
+Synth.new(\wind11_7);
+Synth.new(\wind12_8);
+Synth.new(\wind13_9);
+Synth.new(\wind14_10);
+Synth.new(\wind15_11);
+Synth.new(\wind16_12);
 
 
 //////////////////////////////midi interface osc (OpenSoundControl) where keys are a matrix pad, knob/slider1 is gain, knob/slider2 and knob/slider3 are Attack/Decay envelopes for the indiviual or grouped tones. Output is in stereo i.g. synth outputs spatialized audio.
-////Extra knobs/sliders can be filters like low pass or high pass. The Lamdoma can be tuned to different fundamental frequences 220-880 Hz, this could be basic knob/slider4
+////Extra knobs/sliders can be filters like low pass or high pass. The Lamdoma can be tuned to different fundamental frequences 440-880 Hz, this could be basic knob/slider4
 
 MIDIClient.init;
 MIDIIn.connectAll;
