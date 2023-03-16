@@ -11,8 +11,8 @@ s.sampleRate
 e.query
 
 ////////////////Buffers left and right mono channels/recordings from carrier_so files
-e = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/L_downmixed 6 channel carrier recording.wav");
-k = Buffer.read(s,"/Users/petrostatsiopoulos/Music/SuperCollider Recordings/R_downmixed 6 channel carrier recording.wav");
+e = Buffer.read(s,"/Users/petrostatsiopoulos/Dokuments/PROJECT  FILES/composition/#3/sc/ synth/audio files/left stereo carrier.wav");
+k = Buffer.read(s,"/Users/petrostatsiopoulos/Dokuments/PROJECT  FILES/composition/#3/sc/ synth/audio files/right stereo carrier.wav");
 
 
 
@@ -31,10 +31,10 @@ sig1 = Out.ar(0,GrainBuf.ar(
 	4,
 	k.bufnum,
 	1,
-		LFDNoise1.ar(72).range(0,1),
+		LFDNoise1.ar(496).range(0,1),
 	2,
 		-1,
-	-1,
+	z,
 	512
 	));
 	sig2 = Out.ar(0,GrainBuf.ar(
@@ -43,10 +43,10 @@ sig1 = Out.ar(0,GrainBuf.ar(
 	4,
 	e.bufnum,
 	1,
-		LFDNoise1.ar(72).range(0,1),
+		LFDNoise1.ar(496).range(0,1),
 	2,
 		1,
-	-1,
+	z,
 	1000
 	));
 

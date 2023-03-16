@@ -16,13 +16,18 @@ s.sampleRate
 e.query
 
 ////////////buffer from recording from granulator file
-~e = Buffer.read(s,"/Users/petrostatsiopoulos/Dokuments/PROJECT  FILES/composition/#3/sc/dreadbox synth/audio files/Lamdoma noise LR.wav")
+~e = Buffer.read(s,"/Users/petrostatsiopoulos/Dokuments/PROJECT  FILES/composition/#3/sc/ synth/audio files/gran 28.wav")
 );
 
 //////////individual Synth Definitions which apply band pass filters in 30 individual tones to the noise recording from Granulator file, in stereo)
 (
 
 /////////////1st Lamdoma "octave" a=1 from y=(x+a)x where y is the interface tone (final audio)
+
+(SynthDef.new(\wind1_1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
+	gate=1;gain=1000;x=1;a=0;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
+    sig=BBandPass.ar(PlayBuf.ar(2,0,BufRateScale.kr(0),startPos:~e.numFrames.rand,loop:inf),fund*pitch,pass,mul:env);
+    Out.ar(0,sig*env*gain);}).add;);
 
 (SynthDef.new(\wind2_1, { arg pitch,x,a,gate,gain; var sig,pass,fund;var env,aud;
 	gate=1;gain=1000;x=1;a=1;fund=440;pass=0.001;pitch=(x+a)/x;env=EnvGen.ar(Env.perc(0.02,8,pitch.reciprocal),gate:gate,doneAction:2);
@@ -157,6 +162,7 @@ e.query
 
 (
 Tdef.new(\h,{loop({
+Synth.new(\wind1_1);1.999.rand.wait;
 Synth.new(\wind2_1);1.999.rand.wait;
 Synth.new(\wind3_2);1.999.rand.wait;
 Synth.new(\wind4_3);1.999.rand.wait;
@@ -197,7 +203,7 @@ Tdef(\h).clear;
 
 
 /////////////////////intividual Synth definition tone triggers
-
+Synth.new(\wind1_1);
 Synth.new(\wind2_1);
 Synth.new(\wind3_2);
 Synth.new(\wind4_3);
