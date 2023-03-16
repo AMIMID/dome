@@ -36,21 +36,22 @@ SynthDef.new(\oa, {
 	var env,level,duration,face1,face2,face3,face4;
 	var edge1a,edge1b,edge1c,edge2a,edge2b,edge2c;
 	var edge3a,edge3b,edge3c,edge4a,edge4b,edge4c;
+	var modfreq;
 
 	over1=1;
 	over2=2;
 	over3=3;
 	over4=4;
 	m=0;
-	frequency=2;
+	frequency=1;
 	bank=18;
 	angle=0;
 	detune=1;
-	modamp=2;
+	modamp=1;
+	modfreq=5;
 	scale=modamp.reciprocal;
 
  fundamental=((4*cf)-1)*((4*cf)/2);
-scale=modamp.reciprocal;
 
 	note1 = 2.pow(n1/(fundamental*2));
 	note2 = 2.pow(n2/(fundamental*2));
@@ -63,7 +64,7 @@ scale=modamp.reciprocal;
 
 	freq =(((4*2)-1)*((4*2)/2));
 	l1=(v/freq);
-	l2=l1/modamp;
+	l2=l1/modfreq;
 	f2=(v/l2);
 
 
@@ -76,7 +77,7 @@ osc_1 = (Pan4.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
 		*
 		SinOsc.ar(freq:((note1*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:(131.747+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(131.747+angle).degrad)))
+		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over3).reciprocal)*modamp,phase:(131.747+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note1*f2)*over2)+detune.real,mul:((cf*note1)*over2).reciprocal,phase:(82.338+angle).degrad,
 		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
@@ -86,31 +87,31 @@ osc_1 = (Pan4.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 
 ,xpos:SinOsc.ar(detune.real+rotation,phase:0.degrad),ypos:SinOsc.ar(detune.imag+rotation,phase:0.degrad)));
 
-osc_2 = (Pan4.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note1)*over1).reciprocal,phase:(94.757+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
+osc_2 = (Pan4.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note2)*over1).reciprocal,phase:(94.757+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
 		*
-		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:(131.747+angle).degrad,
-		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(131.747+angle).degrad)))
+		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note2)*over3).reciprocal,phase:(131.747+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note2)*over3).reciprocal)*modamp,phase:(131.747+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note2*f2)*over2)+detune.real,mul:((cf*note2)*over2).reciprocal,phase:(82.338+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
+		add:SinOsc.ar(freq:((note2*freq)*over2)+detune.real,mul:(((cf*note2)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
 		*
 		SinOsc.ar(freq:((note2*f2)*over4)+detune.real,mul:((cf*note2)*over4).reciprocal,phase:(67.938+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
+		add:SinOsc.ar(freq:((note2*freq)*over4)+detune.real,mul:(((cf*note2)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
 
 ,xpos:SinOsc.ar(detune.real+rotation,phase:0.degrad),ypos:SinOsc.ar(detune.imag+rotation,phase:0.degrad)));
 
 osc_3 = (Pan4.ar((SinOsc.ar(freq:((note3*f2)*over1)+detune.real,mul:((cf*note3)*over1).reciprocal,phase:(94.757+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over1)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:(131.747+angle).degrad,
-		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(131.747+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note3)*over3).reciprocal)*modamp,phase:(131.747+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note3*f2)*over2)+detune.real,mul:((cf*note3)*over2).reciprocal,phase:(82.338+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over2)+detune.real,mul:(((cf*note3)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over4)+detune.real,mul:((cf*note3)*over4).reciprocal,phase:(67.938+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over4)+detune.real,mul:(((cf*note3)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
 
 ,xpos:SinOsc.ar(detune.real+rotation,phase:0.degrad),ypos:SinOsc.ar(detune.imag+rotation,phase:0.degrad)));
 
@@ -151,21 +152,23 @@ SynthDef.new(\ob, {
 	var env,level,duration,face1,face2,face3,face4;
 	var edge1a,edge1b,edge1c,edge2a,edge2b,edge2c;
 	var edge3a,edge3b,edge3c,edge4a,edge4b,edge4c;
+	var modfreq;
 
 	over1=1;
 	over2=2;
 	over3=3;
 	over4=4;
 	m=0;
-	frequency=2;
+	frequency=1;
 	bank=18;
 	angle=0;
 	detune=1;
-	modamp=2;
+	modamp=1;
+	modfreq=5;
+	modfreq=5;
 	scale=modamp.reciprocal;
 
 fundamental=((4*cf)-1)*((4*cf)/2);
-scale=modamp.reciprocal;
 
 	note1 = 2.pow(n1/(fundamental*2));
 	note2 = 2.pow(n2/(fundamental*2));
@@ -178,7 +181,7 @@ scale=modamp.reciprocal;
 
 	freq =(((4*2)-1)*((4*2)/2));
 	l1=(v/freq);
-	l2=l1/modamp;
+	l2=l1/modfreq;
 	f2=(v/l2);
 
 
@@ -191,7 +194,7 @@ scale=modamp.reciprocal;
 		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note1*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over3).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note1*f2)*over2)+detune.real,mul:((cf*note1)*over2).reciprocal,phase:((82.338+90)+angle).degrad,
 			add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
@@ -201,31 +204,31 @@ scale=modamp.reciprocal;
 
 ,xpos:SinOsc.ar(detune.imag+rotation,phase:45.degrad),ypos:SinOsc.ar(detune.real+rotation,phase:45.degrad)));
 
-osc_2 = (Pan4.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note1)*over1).reciprocal,phase:(94.757+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
+osc_2 = (Pan4.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note2)*over1).reciprocal,phase:(94.757+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
 		*
-		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
+		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note2)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note2)*over3).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note2*f2)*over2)+detune.real,mul:((cf*note2)*over2).reciprocal,phase:((82.338+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
+		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note2)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note2*f2)*over4)+detune.real,mul:((cf*note2)*over4).reciprocal,phase:((67.938+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note2*freq)*over4)+detune.real,mul:(((cf*note2)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
 
 ,xpos:SinOsc.ar(detune.imag+rotation,phase:45.degrad),ypos:SinOsc.ar(detune.real+rotation,phase:45.degrad)));
 
 osc_3 = (Pan4.ar((SinOsc.ar(freq:((note3*f2)*over1)+detune.real,mul:((cf*note3)*over1).reciprocal,phase:((94.757+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over1)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note3)*over3).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note3*f2)*over2)+detune.real,mul:((cf*note3)*over2).reciprocal,phase:((82.338+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over2)+detune.real,mul:(((cf*note3)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over4)+detune.real,mul:((cf*note3)*over4).reciprocal,phase:((67.938+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over4)+detune.real,mul:(((cf*note3)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
 
 ,xpos:SinOsc.ar(detune.imag+rotation,phase:45.degrad),ypos:SinOsc.ar(detune.real+rotation,phase:45.degrad)));
 
@@ -268,21 +271,22 @@ SynthDef.new(\oc, {
 	var env,level,duration,face1,face2,face3,face4;
 	var edge1a,edge1b,edge1c,edge2a,edge2b,edge2c;
 	var edge3a,edge3b,edge3c,edge4a,edge4b,edge4c;
+	var modfreq;
 
 	over1=1;
 	over2=2;
 	over3=3;
 	over4=4;
 	m=0;
-	frequency=2;
+	frequency=1;
 	bank=18;
 	angle=0;
 	detune=1;
-	modamp=2;
+	modamp=1;
+	modfreq=5;
 	scale=modamp.reciprocal;
 
 		 fundamental=((4*cf)-1)*((4*cf)/2);
-scale=modamp.reciprocal;
 
 	note1 = 2.pow(n1/(fundamental*2));
 	note2 = 2.pow(n2/(fundamental*2));
@@ -295,7 +299,7 @@ scale=modamp.reciprocal;
 
 	freq =(((4*2)-1)*((4*2)/2));
 	l1=(v/freq);
-	l2=l1/modamp;
+	l2=l1/modfreq;
 	f2=(v/l2);
 
 
@@ -308,7 +312,7 @@ osc_1 = (Pan4.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note1*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over3).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note1*f2)*over2)+detune.real,mul:((cf*note1)*over2).reciprocal,phase:((82.338+45)+angle).degrad,
 		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
@@ -318,31 +322,31 @@ osc_1 = (Pan4.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 
 ,xpos:SinOsc.ar(detune.real+rotation,phase:90.degrad),ypos:SinOsc.ar(detune.imag+rotation,phase:90.degrad)));
 
-osc_2 = (Pan4.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note1)*over1).reciprocal,phase:((94.757+45)+angle).degrad,
+osc_2 = (Pan4.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note2)*over1).reciprocal,phase:((94.757+45)+angle).degrad,
 		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
 		*
-		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
+		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note2)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note2)*over3).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note2*f2)*over2)+detune.real,mul:((cf*note2)*over2).reciprocal,phase:((82.338+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
+		add:SinOsc.ar(freq:((note2*freq)*over2)+detune.real,mul:(((cf*note2)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note2*f2)*over4)+detune.real,mul:((cf*note2)*over4).reciprocal,phase:((67.938+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note2*freq)*over4)+detune.real,mul:(((cf*note2)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
 
 ,xpos:SinOsc.ar(detune.imag+rotation,phase:90.degrad),ypos:SinOsc.ar(detune.real+rotation,phase:90.degrad)));
 
 osc_3 = (Pan4.ar((SinOsc.ar(freq:((note3*f2)*over1)+detune.real,mul:((cf*note3)*over1).reciprocal,phase:((94.757+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over1)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note3)*over3).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note3*f2)*over2)+detune.real,mul:((cf*note3)*over2).reciprocal,phase:((82.338+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over2)+detune.real,mul:(((cf*note3)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over4)+detune.real,mul:((cf*note3)*over4).reciprocal,phase:((67.938+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over4)+detune.real,mul:(((cf*note3)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
 
 ,xpos:SinOsc.ar(detune.real+rotation,phase:90.degrad),ypos:SinOsc.ar(detune.imag+rotation,phase:90.degrad)));
 
@@ -384,21 +388,22 @@ SynthDef.new(\og, {
 	var env,level,duration,face1,face2,face3,face4;
 	var edge1a,edge1b,edge1c,edge2a,edge2b,edge2c;
 	var edge3a,edge3b,edge3c,edge4a,edge4b,edge4c;
+	var modfreq;
 
 	over1=1;
 	over2=2;
 	over3=3;
 	over4=4;
 	m=0;
-	frequency=2;
+	frequency=1;
 	bank=18;
 	angle=0;
 	detune=1;
-	modamp=2;
+	modamp=1;
+	modfreq=5;
 	scale=modamp.reciprocal;
 
  fundamental=((4*cf)-1)*((4*cf)/2);
-scale=modamp.reciprocal;
 
 	note1 = 2.pow(n1/(fundamental*2));
 	note2 = 2.pow(n2/(fundamental*2));
@@ -411,7 +416,7 @@ scale=modamp.reciprocal;
 
 	freq =(((4*2)-1)*((4*2)/2))*frequency;
 	l1=(v/freq);
-	l2=l1/modamp;
+	l2=l1/modfreq;
 	f2=(v/l2);
 
 
@@ -424,7 +429,7 @@ osc_1 = (Pan2.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
 		*
 		SinOsc.ar(freq:((note1*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:(131.747+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(131.747+angle).degrad)))
+		add:SinOsc.ar(freq:((note1*freq)*over3)+detune.real,mul:(((cf*note1)*over3).reciprocal)*modamp,phase:(131.747+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note1*f2)*over2)+detune.real,mul:((cf*note1)*over2).reciprocal,phase:(82.338+angle).degrad,
 		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
@@ -434,31 +439,31 @@ osc_1 = (Pan2.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 
 ,pos:SinOsc.ar(rotation+detune.real,phase:(90+45).degrad)));
 
-osc_2 = (Pan2.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note1)*over1).reciprocal,phase:(94.757+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
+osc_2 = (Pan2.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note2)*over1).reciprocal,phase:(94.757+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
 		*
-		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:(131.747+angle).degrad,
-		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(131.747+angle).degrad)))
+		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note2)*over3).reciprocal,phase:(131.747+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note2)*over3).reciprocal)*modamp,phase:(131.747+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note2*f2)*over2)+detune.real,mul:((cf*note2)*over2).reciprocal,phase:(82.338+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
+		add:SinOsc.ar(freq:((note2*freq)*over2)+detune.real,mul:(((cf*note2)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
 		*
 		SinOsc.ar(freq:((note2*f2)*over4)+detune.real,mul:((cf*note2)*over4).reciprocal,phase:(67.938+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
+		add:SinOsc.ar(freq:((note2*freq)*over4)+detune.real,mul:(((cf*note2)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
 
 ,pos:SinOsc.ar(rotation+detune.imag,phase:(45+45).degrad)));
 
 osc_3 = (Pan2.ar((SinOsc.ar(freq:((note3*f2)*over1)+detune.real,mul:((cf*note3)*over1).reciprocal,phase:(94.757+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over1)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:(94.757+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:(131.747+angle).degrad,
-		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:(131.747+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note3)*over3).reciprocal)*modamp,phase:(131.747+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note3*f2)*over2)+detune.real,mul:((cf*note3)*over2).reciprocal,phase:(82.338+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over2)+detune.real,mul:(((cf*note3)*over2).reciprocal)*modamp,phase:(82.338+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over4)+detune.real,mul:((cf*note3)*over4).reciprocal,phase:(67.938+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over4)+detune.real,mul:(((cf*note3)*over4).reciprocal)*modamp,phase:(67.938+angle).degrad)))
 
 ,pos:SinOsc.ar(rotation+detune.real,phase:(0+45).degrad)));
 
@@ -504,21 +509,22 @@ SynthDef.new(\oh, {
 	var env,level,duration,face1,face2,face3,face4;
 	var edge1a,edge1b,edge1c,edge2a,edge2b,edge2c;
 	var edge3a,edge3b,edge3c,edge4a,edge4b,edge4c;
+	var modfreq;
 
 	over1=1;
 	over2=2;
 	over3=3;
 	over4=4;
 	m=0;
-	frequency=2;
+	frequency=1;
 	bank=18;
 	angle=0;
 	detune=1;
-	modamp=2;
+	modamp=1;
+	modfreq=5;
 	scale=modamp.reciprocal;
 
 fundamental=((4*cf)-1)*((4*cf)/2);
-scale=modamp.reciprocal;
 
 	note1 = 2.pow(n1/(fundamental*2));
 	note2 = 2.pow(n2/(fundamental*2));
@@ -531,7 +537,7 @@ scale=modamp.reciprocal;
 
 	freq =(((4*2)-1)*((4*2)/2))*frequency;
 	l1=(v/freq);
-	l2=l1/modamp;
+	l2=l1/modfreq;
 	f2=(v/l2);
 
 
@@ -554,31 +560,31 @@ scale=modamp.reciprocal;
 
 		,pos:SinOsc.ar(rotation+detune.real,phase:(90+90).degrad)));
 
-osc_2 = (Pan2.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note1)*over1).reciprocal,phase:(94.757+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
+osc_2 = (Pan2.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note2)*over1).reciprocal,phase:(94.757+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
 		*
-		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
+		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note2)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note2*f2)*over2)+detune.real,mul:((cf*note2)*over2).reciprocal,phase:((82.338+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
+		add:SinOsc.ar(freq:((note2*freq)*over2)+detune.real,mul:(((cf*note2)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note2*f2)*over4)+detune.real,mul:((cf*note2)*over4).reciprocal,phase:((67.938+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note2*freq)*over4)+detune.real,mul:(((cf*note2)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
 
 ,pos:SinOsc.ar(rotation+detune.imag,phase:(45+90).degrad)));
 
 osc_3 = (Pan2.ar((SinOsc.ar(freq:((note3*f2)*over1)+detune.real,mul:((cf*note3)*over1).reciprocal,phase:((94.757+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over1)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:((94.757+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:((131.747+90)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note3*f2)*over2)+detune.real,mul:((cf*note3)*over2).reciprocal,phase:((82.338+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over2)+detune.real,mul:(((cf*note3)*over2).reciprocal)*modamp,phase:((82.338+90)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over4)+detune.real,mul:((cf*note3)*over4).reciprocal,phase:((67.938+90)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over4)+detune.real,mul:(((cf*note3)*over4).reciprocal)*modamp,phase:((67.938+90)+angle).degrad)))
 
 ,pos:SinOsc.ar(rotation+detune.real,phase:(0+90).degrad)));
 
@@ -626,21 +632,22 @@ SynthDef.new(\ok, {
 	var env,level,duration,face1,face2,face3,face4;
 	var edge1a,edge1b,edge1c,edge2a,edge2b,edge2c;
 	var edge3a,edge3b,edge3c,edge4a,edge4b,edge4c;
+	var modfreq;
 
 	over1=1;
 	over2=2;
 	over3=3;
 	over4=4;
 	m=0;
-	frequency=2;
+	frequency=1;
 	bank=18;
 	angle=0;
 	detune=1;
-	modamp=2;
+	modamp=1;
+	modfreq=5;
 	scale=modamp.reciprocal;
 
 		 fundamental=((4*cf)-1)*((4*cf)/2);
-scale=modamp.reciprocal;
 
 	note1 = 2.pow(n1/(fundamental*2));
 	note2 = 2.pow(n2/(fundamental*2));
@@ -653,7 +660,7 @@ scale=modamp.reciprocal;
 
 	freq =(((4*2)-1)*((4*2)/2))*frequency;
 	l1=(v/freq);
-	l2=l1/modamp;
+	l2=l1/modfreq;
 	f2=(v/l2);
 
 
@@ -676,31 +683,31 @@ osc_1 = (Pan2.ar((SinOsc.ar(freq:((note1*f2)*over1)+detune.real,mul:((cf*note1)*
 
 ,pos:SinOsc.ar(rotation+detune.real,phase:(90+45).degrad)));
 
-osc_2 = (Pan2.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note1)*over1).reciprocal,phase:((94.757+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
+osc_2 = (Pan2.ar((SinOsc.ar(freq:((note2*f2)*over1)+detune.real,mul:((cf*note2)*over1).reciprocal,phase:((94.757+45)+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over1)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
 		*
-		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
+		SinOsc.ar(freq:((note2*f2)*over3)+detune.real,mul:((cf*note2)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
+		add:SinOsc.ar(freq:((note2*freq)*over3)+detune.real,mul:(((cf*note2)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note2*f2)*over2)+detune.real,mul:((cf*note2)*over2).reciprocal,phase:((82.338+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
+		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note2)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note2*f2)*over4)+detune.real,mul:((cf*note2)*over4).reciprocal,phase:((67.938+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note2*freq)*over4)+detune.real,mul:(((cf*note2)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
 
 ,pos:SinOsc.ar(rotation+detune.imag,phase:(45+45).degrad)));
 
 osc_3 = (Pan2.ar((SinOsc.ar(freq:((note3*f2)*over1)+detune.real,mul:((cf*note3)*over1).reciprocal,phase:((94.757+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over1)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over1)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:((94.757+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over3)+detune.real,mul:((cf*note1)*over3).reciprocal,phase:((131.747+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note1)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over3)+detune.real,mul:(((cf*note3)*over1).reciprocal)*modamp,phase:((131.747+45)+angle).degrad)))
 		+
 		(SinOsc.ar(freq:((note3*f2)*over2)+detune.real,mul:((cf*note3)*over2).reciprocal,phase:((82.338+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over2)+detune.real,mul:(((cf*note1)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
+		add:SinOsc.ar(freq:((note3*freq)*over2)+detune.real,mul:(((cf*note3)*over2).reciprocal)*modamp,phase:((82.338+45)+angle).degrad))
 		*
 		SinOsc.ar(freq:((note3*f2)*over4)+detune.real,mul:((cf*note3)*over4).reciprocal,phase:((67.938+45)+angle).degrad,
-		add:SinOsc.ar(freq:((note1*freq)*over4)+detune.real,mul:(((cf*note1)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
+		add:SinOsc.ar(freq:((note3*freq)*over4)+detune.real,mul:(((cf*note3)*over4).reciprocal)*modamp,phase:((67.938+45)+angle).degrad)))
 
 ,pos:SinOsc.ar(rotation+detune.real,phase:(0+45).degrad)));
 
